@@ -1,8 +1,10 @@
 package react;
 
-import react.ReactComponent.ReactElement;
+import react.ReactComponent;
 import haxe.macro.Context;
 import haxe.macro.Expr;
+import haxe.extern.EitherType;
+import haxe.extern.Rest;
 
 /**
 	https://facebook.github.io/react/docs/top-level-api.html
@@ -23,11 +25,13 @@ extern class React
 		https://facebook.github.io/react/docs/top-level-api.html#react.createelement
 	**/
 	#if (debug || react_no_inline)
+	// public static function createElement<P, T:Class<ReactComponentOfProps<P>>>(type:EitherType<T, String>, ?attrs:P, children:Rest<Dynamic>):ReactElement;
 	public static function createElement(type:Dynamic, ?attrs:Dynamic, children:haxe.extern.Rest<Dynamic>):ReactElement;
 	#end
 	
 	@:noCompletion
 	@:native('createElement')
+	// private static function _createElement<P, T:Class<ReactComponentOfProps<P>>>(type:EitherType<T, String>, ?attrs:P, children:Rest<Dynamic>):ReactElement;
 	private static function _createElement(type:Dynamic, ?attrs:Dynamic, children:haxe.extern.Rest<Dynamic>):ReactElement;
 
 	/**
