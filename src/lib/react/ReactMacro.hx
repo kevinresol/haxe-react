@@ -206,7 +206,7 @@ class ReactMacro
 			var props = makeProps(spread, attrs, pos);
 			
 			var args = [type, props].concat(children);
-			return macro untyped react.React._createElement($a{args});
+			return macro (untyped react.React._createElement)($a{args});
 		}
 	}
 	
@@ -272,7 +272,7 @@ class ReactMacro
 		// combine using Object.assign
 		var args = [macro {}].concat(spread);
 		if (attrs.length > 0) args.push({pos:pos, expr:EObjectDecl(attrs)});
-		return macro untyped Object.assign($a{args});
+		return macro (untyped Object.assign)($a{args});
 	}
 	
 	static function parseChildren(xml:Xml, pos:Position) 
