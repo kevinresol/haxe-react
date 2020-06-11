@@ -122,7 +122,7 @@ extern class ReactComponentOf<TProps:{}, TState:{}>
 	#if (js && !debug && !react_no_inline)
 	static function __init__():Void {
 		// required magic value to tag literal react elements
-		untyped __js__("var $$tre = (typeof Symbol === \"function\" && Symbol.for && Symbol.for(\"react.element\")) || 0xeac7");
+		#if haxe4 js.Syntax.code #else untyped __js__ #end ("var $$tre = (typeof Symbol === \"function\" && Symbol.for && Symbol.for(\"react.element\")) || 0xeac7");
 	}
 	#end
 }
